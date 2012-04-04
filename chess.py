@@ -74,7 +74,7 @@ class ChessBoard:
 			if piece[1] == 'p':
 				if piece[0] == 'b':
 					if abs(rx) == abs(ry) and ry == 1 and board[dy][dx][0] == 'w':
-						board[dy][dx] = board[sy][sx]
+						board[dy][dx] = board[sy][sx] if dy % 7 else 'bq'
 						board[sy][sx] = '  '
 						return True
 					if sy < 2 and ry == 2:
@@ -83,7 +83,8 @@ class ChessBoard:
 						return False
 				elif piece[0] == 'w':
 					if abs(rx) == abs(ry) and ry == -1 and board[dy][dx][0] == 'b':
-						board[dy][dx] = board[sy][sx]
+						print dx, dy, board[sy][sx]
+						board[dy][dx] = board[sy][sx] if dy % 7 else 'wq'
 						board[sy][sx] = '  '
 						return True
 					if sy > 5 and ry == -2:
@@ -99,7 +100,6 @@ class ChessBoard:
 				
 				if piece[1] != 'n':
 					while rx != 0 or ry != 0:
-						print sx+rx, sy+ry, board[sy+ry][sx+rx][0] == piece[0], board[sy+ry][sx+rx][0]
 						if board[sy+ry][sx+rx] != '  ' and board[sy+ry][sx+rx][0] == piece[0] and board[sy+ry][sx+rx] != piece:
 							return False
 						rx -= crx
@@ -107,7 +107,7 @@ class ChessBoard:
 				elif board[dy][dx][0] == piece[0]:
 					return False
 					
-				board[dy][dx] = board[sy][sx]
+				board[dy][dx] = board[sy][sx] if dy % 7 and board[sy][sx][1] == 'p' else board[sy][sx][0] + 'q'
 				board[sy][sx] = '  '
 				return True
 				
@@ -123,6 +123,9 @@ class ChessBoard:
 			
 	def set_allowed_color(self, color):
 		self._color = color
+	
+	#def victory_check(self):
+		
 		
 	#def __repr__(self):
 		#return "\n-------------------------------------\n".join([" | ".join(x) for x in self._board])
