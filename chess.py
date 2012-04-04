@@ -107,7 +107,10 @@ class ChessBoard:
 				elif board[dy][dx][0] == piece[0]:
 					return False
 					
-				board[dy][dx] = board[sy][sx] if dy % 7 and board[sy][sx][1] == 'p' else board[sy][sx][0] + 'q'
+				if dy in (0, 7) and board[sy][sx][1] == 'p':
+					board[sy][sx] = board[sy][sx][0] + 'q'
+					
+				board[dy][dx] = board[sy][sx]
 				board[sy][sx] = '  '
 				return True
 				
