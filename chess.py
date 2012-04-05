@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
 #lookup table of each piece to speed up the check of a valid move
 
 rock   = {(-7, 0): True, (-6, 0): True, (-5, 0): True, (-4, 0): True,\

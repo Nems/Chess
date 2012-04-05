@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
 from chess import ChessBoard
 import pygame
 
