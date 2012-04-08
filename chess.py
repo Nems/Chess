@@ -119,9 +119,11 @@ class ChessBoard:
 				
 			else:
 				return False
+				
+	def check_path(self, piece_rules, dx, dy):
+		pass
 		
 	def follow_rules(self, piece, rx, ry):
-			
 		try:
 			return self.rules_table[piece][(rx,ry)]
 		except KeyError:
