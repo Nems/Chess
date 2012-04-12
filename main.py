@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 
 from chess import ChessBoard
-import pygame
+import pygame, time
 
 def load_images():
 	piecestr = 'prnbqk'
@@ -81,7 +81,7 @@ def pygame_mainloop():
 				if piece[0] != ' ':
 					screen.blit(chess[piece], (x*32+offset, y*24+offset-12))
 		pygame.display.update()
-		pygame.time.delay(40)
+		time.sleep(0.04)
 	
 
 def main():

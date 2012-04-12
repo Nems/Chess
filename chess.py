@@ -100,13 +100,18 @@ class ChessBoard:
 			if self.follow_rules(piece[1], rx, ry):
 				crx = (cmp(rx, 0))
 				cry = (cmp(ry, 0))
+				aux_x, aux_y = crx,cry
 				
 				if piece[1] != 'n':
-					while rx != 0 or ry != 0:
-						if board[sy+ry][sx+rx] != '  ' and board[sy+ry][sx+rx][0] == piece[0] and board[sy+ry][sx+rx] != piece:
+					while abs(aux_x) <= abs(rx) and abs(aux_y) <= abs(ry):
+						tx, ty = sx + aux_x, sy + aux_y
+						print board[ty][tx], board[ty][tx] != '  ' and board[ty][tx][0] != piece[0], abs(aux_x) < abs(rx) or abs(aux_y) < abs(ry), tx, dx, ty, dy
+						if board[ty][tx] != '  ' and board[ty][tx][0] == piece[0] and board[ty][tx] != piece:
 							return False
-						rx -= crx
-						ry -= cry
+						elif board[ty][tx] != '  ' and board[ty][tx][0] != piece[0] and (abs(aux_x) < abs(rx) or abs(aux_y) < abs(ry)):
+							return False
+						aux_x += crx
+						aux_y += cry
 				elif board[dy][dx][0] == piece[0]:
 					return False
 					
